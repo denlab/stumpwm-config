@@ -113,6 +113,8 @@
 ;; via `gconf-editor' -> apps -> mail-notification -> commands)
 
 ;; launch Web browser
+;; denlab: this breaks C-t f (swich to window visualy: should be bound
+;; to C-t o)
 (defcommand firefox () ()
   "Start Firefox or switch to it, if it is already running."
   (run-or-raise "firefox" '(:class "Firefox")))
@@ -121,6 +123,7 @@
 ;; run an `urxvt' terminal (instead of `xterm')
 ;; TODO Install `rxvt-unicode'
 ;; FIXME If urxvt is not installed, let default keybinding
+;; denlab : dontreally like that 
 '(defcommand urxvt () ()
   "Start an urxvt instance or switch to it, if it is already running."
   (run-or-raise "urxvt" '(:instance "urxvt")))
@@ -131,6 +134,7 @@
     ; How do I paste text to an `urxvt' terminal?
     ; Shift + Insert
 
+;; denlab: nope
 ;; too dangerous (easily typed!)
 ;; ;; log out
 ;; (define-key *root-map* (kbd "q") "quit")
@@ -139,7 +143,7 @@
 ;; (define-key *root-map* (kbd "Delete") "exec gksudo halt")
 
 ;; lock screen (x or L or l?)
-'(define-key *root-map* (kbd "L") "exec xtrlock")
+(define-key *root-map* (kbd "L") "exec xcalib -invert -alter && xtrlock && xcalib -invert -alter")
 
 '(define-key *root-map* (kbd "M-l") "exec xset dpms force off")
 
