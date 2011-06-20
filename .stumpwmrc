@@ -113,10 +113,10 @@
 ;; via `gconf-editor' -> apps -> mail-notification -> commands)
 
 ;; launch Web browser
-'(defcommand firefox () ()
+(defcommand firefox () ()
   "Start Firefox or switch to it, if it is already running."
   (run-or-raise "firefox" '(:class "Firefox")))
-'(define-key *root-map* (kbd "f") "firefox")
+(define-key *root-map* (kbd "f") "firefox")
 
 ;; run an `urxvt' terminal (instead of `xterm')
 ;; TODO Install `rxvt-unicode'
