@@ -104,9 +104,9 @@
 ;;**** Desktop
 
 ;; launch Emacs
-'(defcommand emacs () ()  ;! redefining emacs command
+(defcommand emacs () ()  ;! redefining emacs command
   "Start Emacs or switch to it, if it is already running."
-  (run-or-raise "emacs" '(:class "Emacs")))
+  (run-or-raise "emacs -rv" '(:class "Emacs")))
 
 ;; mail notification
 ;; use `blink -c -r 1' (TODO Install `blinkd') for new mail (to be configured
