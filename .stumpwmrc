@@ -86,7 +86,7 @@
            filename)))
 
 ;; screenshot-to-file
-'(defcommand screenshot-to-file (filename) ((:rest "Filename: "))
+(defcommand screenshot-to-file (filename) ((:rest "Filename: "))
   (run-shell-command
    (format nil "import -window root ~a" filename)))
 
@@ -145,19 +145,21 @@
 ;; lock screen (x or L or l?)
 (define-key *root-map* (kbd "L") "exec xcalib -invert -alter && xtrlock && xcalib -invert -alter")
 
+;; denlab : why is that?
 '(define-key *root-map* (kbd "M-l") "exec xset dpms force off")
 
 ;; take a screenshot of the screen (using PrtSc)
 ;; TODO Install `imagemagick' (for getting the `import' command)
-'(define-key *root-map* (kbd "Print")
+;; denlab : install image magic for that
+(define-key *root-map* (kbd "Print")
   "exec import -window root png:$HOME/Desktop/screenshot_$(date +%F_%H-%M-%S).png")
 
 ;; take a screenshot of a window (using Alt-PrtSc)
 ;; TODO Install `scrot'
-'(defcommand part-screenshot () ()
+(defcommand part-screenshot () ()
   "Take a screenshot of only the active window."
   (run-shell-command "scrot -s"))
-'(define-key *top-map* (kbd "M-Print") "part-screenshot")
+(define-key *top-map* (kbd "M-Print") "part-screenshot")
 
 
 ;;**** Window Management
@@ -175,6 +177,7 @@
 
 ;;**** Custom Shortcuts
 
+;; denlab: would nice to customize
 ;; keyboard layout (toggling between "qwerty-gb" and "azwerty-fr" via
 ;; `Caps_Lock')
 '(run-shell-command "setxkbmap -model \"pc105\" -layout \"gb,fr\" -option \"grp:caps_toggle,grp_led:scroll\"")
