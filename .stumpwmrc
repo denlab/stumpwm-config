@@ -161,6 +161,10 @@
   (run-shell-command "scrot -s"))
 (define-key *top-map* (kbd "M-Print") "part-screenshot")
 
+;; commdnd to invert the screen
+(defcommand xinvert () ()
+  "Invert the screen colors"
+  (run-shell-command "xcalib -invert -alter"))
 
 ;;**** Window Management
 
