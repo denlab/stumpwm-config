@@ -78,6 +78,8 @@
 '(defcommand unison-synchronization (host) ((:rest "Synchro host: "))
   (run-shell-command (concat "/home/sva/bin/unisync " host)))
 
+
+
 ;; screenshot-to-website
 '(defcommand screenshot-to-website (filename) ((:rest "Filename: "))
   (run-shell-command
@@ -385,6 +387,7 @@
 '(set-unfocus-color "palegreen3")
 
 
+;; interesting ...
 ;; input focus is transferred to the window you click on
 '(setf *mouse-focus-policy* :click)
 
@@ -402,7 +405,7 @@
 
 
 ;; from simias
-'(defun shift-windows-forward (frames win)
+(defun shift-windows-forward (frames win)
   (when frames
           (let ((frame (car frames)))
                  (shift-windows-forward (cdr frames)
@@ -410,13 +413,13 @@
                  (when win
                          (pull-window win frame)))))
 
-'(defcommand rotate-windows () ()
+(defcommand rotate-windows () ()
   (let* ((frames (group-frames (current-group)))
            (win (frame-window (car (last frames)))))
           (shift-windows-forward frames win)))
 
 ;; swap 2 windows
-'(define-key *root-map* (kbd "~") "rotate-windows")
+(define-key *root-map* (kbd "C-r") "rotate-windows")
 
 
 ;; from simias
