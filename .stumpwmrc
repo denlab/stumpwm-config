@@ -598,9 +598,12 @@
 ;; (run-shell-command "/usr/bin/bluetooth-applet &")
 ;; (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 
-;; this is hack to have a black desktop bg, instead of the default ubuntu
-(run-shell-command "nautilus")
+(stumpwm:run-commands
+            "vsplit")
 
+;; this is hack to have a black desktop bg, instead of the default ubuntu
+(run-shell-command "nautilus --no-default-window")
+'(run-shell-command "nautilus --no-default-window")
 
 ;; other programs in the system tray
 (run-shell-command "gnome-power-manager")
@@ -612,6 +615,9 @@
                                         ; TODO Install `inotify-tools' and
                                         ; `libnotify-bin' for this to work as
                                         ; expected
+
+
+'(run-shell-command "~/Dropbox/bin/nautilus-wait-then-kill")
 
 '(run-shell-command "emacs")
 ;; (run-shell-command "urxvt")
