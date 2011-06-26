@@ -578,7 +578,7 @@
 ;; From http://archive.ubuntu.com/ubuntu/pool/universe/t/trayer/
 '(run-shell-command "/usr/bin/trayer --SetDockType false --transparent true --expand false")
 ;; (run-shell-command "/usr/bin/trayer")
-
+(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
 
 ;; dzen2 -fn fixed -w 600 -ta l -fg '#ffffff' -bg '#006699' -e ''
 
