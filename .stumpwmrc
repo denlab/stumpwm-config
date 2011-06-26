@@ -283,13 +283,13 @@
 
 
 ;; from http://en.wikipedia.org/wiki/User:Gwern/.stumpwmrc
-'(defun cat (&rest strings) "A shortcut for (concatenate 'string foo bar)."
+(defun cat (&rest strings) "A shortcut for (concatenate 'string foo bar)."
   (apply 'concatenate 'string strings))
 
 ;; Web browsing commands
 ;; Get the X selection and order the GUI browser to open it. Presumably it
 ;; is a HTTP address.
-'(defcommand open-selection-browser () ()
+(defcommand open-selection-browser () ()
   "docstring"
   (run-shell-command (cat "exec firefox " (get-x-selection))))
 
