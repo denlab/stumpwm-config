@@ -598,6 +598,10 @@
 ;; (run-shell-command "/usr/bin/bluetooth-applet &")
 ;; (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 
+;; this is hack to have a black desktop bg, instead of the default ubuntu
+(run-shell-command "nautilus")
+
+
 ;; other programs in the system tray
 '(run-shell-command "gnome-power-manager")
 '(run-shell-command "nm-applet --sm-disable")  ; network manager
