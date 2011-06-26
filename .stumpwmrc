@@ -578,7 +578,7 @@
 ;; From http://archive.ubuntu.com/ubuntu/pool/universe/t/trayer/
 '(run-shell-command "/usr/bin/trayer --SetDockType false --transparent true --expand false")
 ;; (run-shell-command "/usr/bin/trayer")
-(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
+;(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
 
 ;; dzen2 -fn fixed -w 600 -ta l -fg '#ffffff' -bg '#006699' -e ''
 
@@ -590,6 +590,7 @@
 '(define-key *root-map* (kbd "P")
   "exec dmenu_run -i -b -p \"run command:\"") ; simple $PATH to run commands
 
+;(define-frame-preference "stalonetray" (3 t t :title stalonetray))
 
 
 ;; (run-shell-command "/usr/bin/gnome-settings-daemon")
@@ -599,10 +600,25 @@
 ;; (run-shell-command "/usr/bin/pactl load-module module-x11-xsmp &")
 
 (stumpwm:run-commands
-            "vsplit")
+ ;; Hack to have a black desktop background instead of the stock
+ ;; ubuntu one
+ "exec /bin/sh -c nautilus --no-default-window"
+; "exec /bin/sh -c ~/Dropbox/bin/nautilus-wait-then-kill"
+ ;; build the main panel and the lower bar
+ "vsplit" "fnext"
+ "vsplit" "remove" "vsplit" "remove" "vsplit" "remove"
+ ;; build the lower bar with 2 shell and the dock
+
+ "hsplit" "hsplit" "balance-frames" "fnext"
+ ;"exec stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t"
+ "hsplit" "remove" "hsplit" "remove" "hsplit" "remove" "hsplit" "remove"
+ "exec x-terminal-emulator"
+ "fselect 3" "exec stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t"
+ "fselect 1" "exec x-terminal-emulator"
+)
 
 ;; this is hack to have a black desktop bg, instead of the default ubuntu
-(run-shell-command "nautilus --no-default-window")
+;(run-shell-command "nautilus --no-default-window")
 '(run-shell-command "nautilus --no-default-window")
 
 ;; other programs in the system tray
