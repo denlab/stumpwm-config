@@ -603,8 +603,8 @@
 
 
 ;; other programs in the system tray
-'(run-shell-command "gnome-power-manager")
-'(run-shell-command "nm-applet --sm-disable")  ; network manager
+(run-shell-command "gnome-power-manager")
+(run-shell-command "nm-applet")  ; network manager
 ;; (run-shell-command "which mail-notification && mail-notification --sm-disable")
 '(run-shell-command "which log-event-notify && log-event-notify")
                                         ; TODO Install `inotify-tools' and
