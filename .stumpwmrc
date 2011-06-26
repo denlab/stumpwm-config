@@ -450,11 +450,19 @@
 ;; modeline border color
 '(setf *mode-line-border-color* "palegreen3")
 
+(setf *window-border-style* :THIN)
+
 ;; set contrib directory
-'(set-contrib-dir "/home/sva/src/stumpwm/contrib")
+(set-contrib-dir "/usr/share/common-lisp/source/stumpwm/contrib/")
 
 ;; load a few modules
 '(mapcar #'load-module '("cpu"
+                        "mem"
+                        "battery-portable"
+                        "net"
+                        "wifi"
+                        "disk"))
+(mapcar #'load-module '("cpu"
                         "mem"
                         "battery-portable"
                         "net"
