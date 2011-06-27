@@ -568,7 +568,7 @@
 
 ;; shell program used by `run-shell-command' (`sh' by default, which is *not*
 ;; `bash' nor `zsh')
-'(setq *shell-program* (stumpwm::getenv "SHELL"))  ; `getenv' is not exported
+(setq *shell-program* (stumpwm::getenv "SHELL"))  ; `getenv' is not exported
 
 ;; system tray
 
