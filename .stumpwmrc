@@ -59,9 +59,13 @@
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs -rv" '(:class "Emacs")))
 
+;; Another way to declare a shortcut for launching google-chrome
+(defprogram-shortcut :chrome :command "google-chrome" 
+                     :props '(:class "Google-chrome")
+                     :map *root-map* :key (kbd "b"))
+
 ;;Set the mouse policy to focus follows mouse;
 (setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
-
 
 ;; Launch commands
 (run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
