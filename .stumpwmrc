@@ -36,6 +36,7 @@
 
 (run-commands "restore-from-file ~/.stumpwm.screendump")
 
+;; specific commands that permits to run or raise the same instance of programs
 (defcommand firefox () ()
   "Start Firefox or switch to it, if it is already running."
   (run-or-raise "firefox" '(:class "Firefox")))
@@ -44,17 +45,35 @@
 (defcommand term1 () ()
   "run term emul"
   (run-or-raise "gnome-terminal" '(:class "Term1")))
-
 (run-commands "term1")
 
+(defcommand xterm-1 () ()
+  "run an xterm instance or switch to it, if it is already running."
+  (run-or-raise "xterm -name xterm1" '(:instance "xterm1")))
+(define-key *root-map* (kbd "x") "xterm-1")
+
+;; frame selection
 (define-key *root-map* (kbd "o") "fselect")
 
 (defcommand emacs () ()  ;! redefining emacs command
   "Start Emacs or switch to it, if it is already running."
   (run-or-raise "emacs -rv" '(:class "Emacs")))
 
-(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
+;; Another way to declare a shortcut for launching google-chrome
+(defprogram-shortcut :chrome :command "chromium-browser" 
+                     :props '(:class "Chromium")
+                     :map *root-map* :key (kbd "b"))
+;; conkeror powaaaa!
+;;(defprogram-shortcut :chrome :command "conkeror" 
+;;  :props '(:class "conkeror")
+;;  :map *root-map* :key (kbd "d")
+;; )
 
+;;Set the mouse policy to focus follows mouse;
+(setf *mouse-focus-policy* :sloppy) ;; :click, :ignore, :sloppy
+
+;; Launch commands
+(run-shell-command "stalonetray -t --window-type normal --pixmap-bg ~/Dropbox/home/black-1x1.xpm -v -t")
 (run-shell-command "/usr/bin/gnome-settings-daemon")
 (run-shell-command "/usr/bin/nm-applet &")
 (run-shell-command "/usr/bin/bluetooth-applet &")
